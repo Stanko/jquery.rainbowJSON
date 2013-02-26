@@ -4,7 +4,7 @@
         defaults = {
             maxElements: 0, // maximum elements per object that will be printed
             maxDepth: 0, // maximum depth for recursive printing
-            json: null, // json as object or in string format (if empty, html of the object will be used)
+            json: null, // json as object or in string format (if empty, html of the DOM object will be used)
             bgColor: '#F5FAFF' // background color of the div, which will be used for shading
         };
 
@@ -36,6 +36,8 @@
             // checks if json is a string, or object already
             if(typeof(this.options.json) == 'string'){
                 stringifiedJson = this.options.json;
+
+                // catches syntax errors, also some older browsers doesn't support JSON
                 try{
                     jsonObject = JSON.parse(this.options.json);
                 }
@@ -45,6 +47,7 @@
             }
             else{
                 jsonObject = this.options.json;
+                // if older browser which doesn't support JSON
                 try{
                     stringifiedJson = JSON.stringify(jsonObject);
                 }
