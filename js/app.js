@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
 	$('.makeItNice').rainbowJSON({
 		maxElements: 7,
 		maxDepth: 4

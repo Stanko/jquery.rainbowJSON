@@ -10,7 +10,7 @@ Usage
 $('.makeItNice').rainbowJSON({
     maxElements: 0, // maximum elements per object that will be printed (0 is unlimited)
     maxDepth: 0, // maximum depth for recursive printing (0 is unlimited)
-    plainJSON: '', // json in plain text format (if empty, html of the object will be used)
+    json: null, // json as object or in string format (if empty, html of the object will be used)
     bgColor: '#F5FAFF' // background color of the div, which will be used for shading
 });
 </pre>
