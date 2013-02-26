@@ -27,6 +27,7 @@
         init: function() {
             var syntaxError = false;
             var jsonObject;
+            var stringifiedJson;
 
             if(!this.options.json){
                 this.options.json = $.trim(this.element.html());
@@ -34,6 +35,7 @@
 
             // checks if json is a string, or object already
             if(typeof(this.options.json) == 'string'){
+                stringifiedJson = this.options.json;
                 try{
                     jsonObject = JSON.parse(this.options.json);
                 }
@@ -43,6 +45,12 @@
             }
             else{
                 jsonObject = this.options.json;
+                try{
+                    stringifiedJson = JSON.stringify(jsonObject);
+                }
+                catch(e){
+                    stringifiedJson = 'You browser does not support JSON.stringify() method';
+                }
             }
 
             var html = '';
@@ -50,7 +58,7 @@
             // All necessary HTML and plain text JSON
             html += '<div class="rainbowJSON">';
                 html += '<a href="javascript:void(0);" onclick="$(this).next(\'.plainJSON\').toggle();">Show plain JSON</a>';
-                html += '<pre class="plainJSON">' + this.options.plainJSON + '</pre>';
+                html += '<pre class="plainJSON">' + stringifiedJson + '</pre>';
                 html += '<div class="formattedJSON" style="background-color: '+this.options.bgColor+'"></div>';
             html += '</div>';
 
