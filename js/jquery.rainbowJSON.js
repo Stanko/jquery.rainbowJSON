@@ -31,6 +31,8 @@
             if(!this.options.json){
                 this.options.json = $.trim(this.element.html());
             }
+
+            // checks if json is a string, or object already
             if(typeof(this.options.json) == 'string'){
                 try{
                     jsonObject = JSON.parse(this.options.json);
