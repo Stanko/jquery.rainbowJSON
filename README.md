@@ -2,7 +2,7 @@ jquery.rainbowJSON
 ==================
 
 JSON pretty print, jQuery plugin.
-Takes JSON in plain text format, and make it way more readable and colorful :) you can choose depth of the recursion and maximum children elements which will be printed. Similar to var_dump() in php.
+Takes JSON and make it way more readable and colorful :) you can choose depth of the recursion and maximum children elements which will be printed. Similar to var_dump() in php.
 
 Usage
 -----
