@@ -57,7 +57,7 @@
             }
 
             var html = '';
-            
+
             // All necessary HTML and plain text JSON
             html += '<div class="rainbowJSON">';
                 html += '<a href="javascript:void(0);" onclick="$(this).next(\'.plainJSON\').toggle();">Show plain JSON</a>';
@@ -74,7 +74,7 @@
             }
             else{
                 html = '<div>{';
-                html += this.loopObject(jsonObject);    
+                html += this.loopObject(jsonObject);
                 html += '}</div>';
             }
 
@@ -104,12 +104,12 @@
                 brackets = ['{', '}'];
                 value = object[property];
                 type = typeof(object[property]);
-                
+
                 html += '<div>';
-                
+
                 // Objects and arrays
-                if(type == 'object' && value != null ){
-                    if (typeof(value.push) == 'function') { 
+                if(type == 'object' && value !== null ){
+                    if (typeof(value.push) == 'function') {
                         brackets = ['[', ']'];
                     }
 
@@ -118,21 +118,21 @@
 
                     recursiveHtml = this.loopObject(value);
 
-                    if(recursiveHtml == ''){
+                    if(recursiveHtml === ''){
                         html += '<span class="rainbowEmpty"> *empty* </span>';
                     }
                     else{
                         html += ' <a href="javascript:void(0)" onclick="$(this).next(\'span\').toggle();" class="rainbowToggle">&raquo;</a> ';
                         html += '<span class="rainbowArray" style="background-color: '+this.shadeColor(this.options.bgColor, this.depth)+'">';
                         html += recursiveHtml;
-                        html += '</span>';    
+                        html += '</span>';
                     }
                     html += brackets[1];
 
                 }
                 // Strings, numbers, booleans and nulls
                 else{
-                    if( value == null ){
+                    if( value === null ){
                         value = 'null';
                         type = 'null';
                     }
@@ -147,17 +147,17 @@
         },
         // returns darker color for shading objects in depth
         shadeColor : function(color, depth) {
-            var R = parseInt(color.substring(1,3),16)
-            var G = parseInt(color.substring(3,5),16)
+            var R = parseInt(color.substring(1,3),16);
+            var G = parseInt(color.substring(3,5),16);
             var B = parseInt(color.substring(5,7),16);
 
-            R = parseInt(R * (100 + depth*-2) / 100);
-            G = parseInt(G * (100 + depth*-2) / 100);
-            B = parseInt(B * (100 + depth*-2) / 100);
+            R = parseInt(R * (100 + depth*-2) / 100, 10);
+            G = parseInt(G * (100 + depth*-2) / 100, 10);
+            B = parseInt(B * (100 + depth*-2) / 100, 10);
 
-            R = (R<255)?R:255;  
-            G = (G<255)?G:255;  
-            B = (B<255)?B:255;  
+            R = (R<255)?R:255;
+            G = (G<255)?G:255;
+            B = (B<255)?B:255;
 
             var RR = ((R.toString(16).length==1)?"0"+R.toString(16):R.toString(16));
             var GG = ((G.toString(16).length==1)?"0"+G.toString(16):G.toString(16));
