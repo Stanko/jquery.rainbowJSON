@@ -20,7 +20,7 @@ Example
 
 ![rainbowJSON in action](http://i.imgur.com/EHkskh9.png "You can see different options used, and syntax error")
 
-Option used in image above:
+Options used in image above:
 
 <pre>
 $('.makeItNice').rainbowJSON({
