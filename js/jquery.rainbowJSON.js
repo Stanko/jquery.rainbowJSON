@@ -73,9 +73,17 @@
                 html = syntaxError;
             }
             else{
-                html = '<div>{';
-                html += this.loopObject(jsonObject);
-                html += '}</div>';
+                type = typeof(jsonObject);
+                if (type != 'object' || jsonObject === null) {
+                    if (jsonObject === null) {
+                        type = 'null';
+                    }
+                    html = '<div><span class="rainbowValue ' + type + '">' + jsonObject + '</span> <span class="rainbowType">(' + type + ')</span></div>';
+                } else {
+                    html = '<div>{';
+                    html += this.loopObject(jsonObject);
+                    html += '}</div>';
+                }
             }
 
             this.rainbowDiv.append(html);
